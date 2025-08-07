@@ -13,7 +13,7 @@ This is a simple wallet and transaction service written in Go, designed for a te
 
 ## Prerequisites
 
-* Go 1.18+ installed
+* Go 1.23+ installed
 * SQLite3
 
 ## Project Structure
