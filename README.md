@@ -32,7 +32,8 @@ testCaseGO/
 │       ├── service.go          # Service functions (Send, GetLast, GetBalance)
 │       └── storage.go          # CRUD operations and business logic
 ├── go.mod
-└── main.go                     # Application entry point
+└── app
+    └── main.go                 # Application entry point
 ```
 
 ## Installation
