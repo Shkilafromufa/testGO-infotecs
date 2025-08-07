@@ -28,7 +28,7 @@ testCaseGO/
 │   │   └── wallet.go           # Wallet struct
 │   └── service
 │       ├── database
-|       |    └── database.go    # DB initialization and helpers
+|       |    └── database.db    # DB initialization and helpers
 │       ├── service.go          # Service functions (Send, GetLast, GetBalance)
 │       └── storage.go          # CRUD operations and business logic
 ├── go.mod
