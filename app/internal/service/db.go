@@ -37,7 +37,7 @@ func CreateTables() {
 	}
 }
 func initDb() (*sql.DB, error) {
-	bd, err := sql.Open("sqlite3", "../internal/service/database/database.db")
+	bd, err := sql.Open("sqlite3", "../../internal/service/database/database.db")
 	if err != nil {
 		return nil, err
 	}
