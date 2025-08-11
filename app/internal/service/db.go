@@ -37,7 +37,7 @@ func CreateTables() {
 	}
 }
 func initDb() (*sql.DB, error) {
-	bd, err := sql.Open("sqlite3", "../../internal/service/database/database.db")
+	bd, err := sql.Open("sqlite3", "internal/service/database/database.db")
 	if err != nil {
 		return nil, err
 	}
@@ -114,6 +114,9 @@ func CompleteTransaction(amount float64, hashFrom string, hashTo string) error {
 	db, err := initDb()
 	if err != nil {
 		return err
+	}
+	if amount < 0 {
+		return fmt.Errorf("amount must be greater than zero")
 	}
 	var BalanceFrom, BalanceTo float64
 	defer closeDB(db)

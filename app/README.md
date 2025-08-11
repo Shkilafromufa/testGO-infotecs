@@ -87,7 +87,7 @@ The service listens on port `8080` by default.
 **Example**:
 
 ```bash
-curl "http://localhost:8080/api/transactions?count=5"
+curl "http://localhost:8000/api/transactions?count=5"
 ```
 
 ```json
@@ -119,9 +119,9 @@ curl "http://localhost:8080/api/transactions?count=5"
 **Example**:
 
 ```bash
-curl -X POST http://localhost:8080/api/send \
+curl -X POST http://localhost:8000/api/send \
   -H "Content-Type: application/json" \
-  -d '{"from":"addr1","to":"addr2","amount":50}'
+  -d '{"from":"b77f0db580c7d678195c09dfc75e07d8236ef7d282ece3dc22c9c4e8dfdf4478","to":"555bafa10e339d71b43925e47f91f3d67d7f358512448b91e0dc4d633e5c5e6d","amount":50}'
 ```
 
 ### Get Wallet Balance
@@ -136,7 +136,7 @@ curl -X POST http://localhost:8080/api/send \
 **Example**:
 
 ```bash
-curl http://localhost:8080/api/wallet/<hash>/balance
+curl http://localhost:8000/api/wallet/ca67fe009aab34d5fd1529f731cff2f16867211ae06f9844d93fb360c31b710b/balance
 ```
 
 ```json
