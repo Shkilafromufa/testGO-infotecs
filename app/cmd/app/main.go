@@ -1,32 +1,31 @@
 package main
 
 import (
+	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
-	"log"
+	fiberRecover "github.com/gofiber/fiber/v2/middleware/recover"
+
 	"testCaseGO/internal/handler"
-	"testCaseGO/internal/service"
 	"testCaseGO/internal/setup"
 )
 
+// main — точка входа приложения.
+// Настраивает окружение, инициализирует Fiber и запускает сервер.
 func main() {
-	err := setup.PrepareEnv()
-	{
-		if err != nil {
-			log.Fatal(err)
-		}
+	c, err := setup.PrepareEnv()
+	if err != nil {
+		log.Fatal(err)
 	}
-	defer func() {
-		service.CloseDB(service.Db)
-		err := recover()
-		if err != nil {
-			log.Fatal(err)
-		}
-	}()
-	app := fiber.New(fiber.Config{})
+	defer c.DB.Close()
+
+	app := fiber.New()
 	app.Use(logger.New())
-	app.Use(recover())
-	handler.RegisterRoutes(app)
+	app.Use(fiberRecover.New())
+
+	handler.NewHTTP(app, c.Svc)
+
 	if err := app.Listen(":8000"); err != nil {
 		log.Fatal(err)
 	}
